@@ -94,16 +94,25 @@ python3 scripts/generate-assets.py
 
 This is a plain static site — **no build command, publish the repository root**.
 
-### GitHub Pages (your chosen host)
-1. Push this branch and merge it into `main` (or whichever branch you publish from).
-2. In the repo: **Settings → Pages → Build and deployment → Source: _Deploy from a
-   branch_**, then choose **`main`** and **`/ (root)`**, and Save.
+### GitHub Pages — via GitHub Actions (configured)
+This repo includes a Pages deploy workflow at `.github/workflows/deploy.yml`. It
+publishes the site on every push to `main`, and can also be run manually from the
+**Actions** tab.
+
+1. Merge to `main`. The **Deploy site to GitHub Pages** workflow runs automatically
+   and publishes the site (it bundles only the site files, excluding `scripts/`,
+   `configure.sh`, `README.md`, and VCS data).
+2. The workflow enables Pages (source = *GitHub Actions*) on its first run. If your
+   organization blocks auto-enablement, set it once under **Settings → Pages → Build
+   and deployment → Source: _GitHub Actions_**, then re-run the workflow.
 3. Your site goes live at `https://YOURUSER.github.io/YOURREPO/`.
    For `jeancamposlabs/camposlabs` that is `https://jeancamposlabs.github.io/camposlabs/`.
 
 All internal links and asset paths are **relative**, so the site works correctly
 from a project sub-path (`/camposlabs/`) and from a custom root domain alike.
-`.nojekyll` is included so files are served exactly as-is.
+
+> Prefer no workflow? Delete `.github/workflows/deploy.yml` and instead use
+> **Settings → Pages → Source: _Deploy from a branch_ → `main` / `(root)`**.
 
 ### Netlify
 Drag-and-drop the folder at <https://app.netlify.com/drop>, **or** connect the repo
