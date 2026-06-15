@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://jeancamposlabs.github.io/camposlabs/sitemap.xml
+Sitemap: https://jeancamposlabs.github.io/CamposLabs/sitemap.xml
