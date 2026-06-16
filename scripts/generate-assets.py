@@ -2,8 +2,7 @@
 """
 Generate EvenFee brand images: favicon, PWA icons, and the Open Graph image.
 
-This is how the committed images in /assets were produced. Re-run it after you
-rebrand (new name / colors) to regenerate everything in one go.
+Re-run after rebranding to regenerate everything in one go.
 
 Requirements:
     pip install cairosvg          # needs system cairo libs (preinstalled on most Linux)
@@ -11,6 +10,8 @@ Requirements:
 
 Usage:
     python3 scripts/generate-assets.py
+
+Note: the previous "equals-bars" mark is preserved in assets/brand-v1/ for rollback.
 """
 import os
 import cairosvg
@@ -19,7 +20,7 @@ import cairosvg
 BRAND       = "EvenFee"
 COLOR_DARK  = "#1e3a8a"   # gradient start (deep indigo)
 COLOR_MAIN  = "#2563eb"   # gradient end / primary
-COLOR_GREEN = "#6ee7b7"   # recovery-green accent
+COLOR_GREEN = "#6ee7b7"   # check accent
 HEADLINE    = ["Recover the Amazon FBA", "fees you were overcharged."]
 SUBHEAD     = ["Mis-measured dimensions push items into a higher size",
                "tier. We find the errors and help you get the money back."]
@@ -27,33 +28,49 @@ CHIPS       = [("Official Amazon SP-API", 318), ("No buyer data", 206), ("GDPR-c
 FONT        = "DejaVu Sans"
 # -----------------------------------------------------------------------------
 
-OUT = os.path.join(os.path.dirname(__file__), "..", "assets")
-OUT = os.path.abspath(OUT)
+OUT = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "assets"))
 
-def mark(rounded: bool) -> str:
-    rx = 'rx="15"' if rounded else ""
-    return f'''<rect width="64" height="64" {rx} fill="url(#g)"/>
-  <rect x="16" y="25" width="32" height="7" rx="3.5" fill="#ffffff"/>
-  <rect x="16" y="38" width="21" height="7" rx="3.5" fill="{COLOR_GREEN}"/>'''
+
+def glyph(c1=COLOR_GREEN, white="#ffffff"):
+    """Rising arrow (white) + check (accent), drawn in a 0..64 box."""
+    return (
+        f'<path d="M15 42 L27 30 L35 38 L48 24" fill="none" stroke="{white}" '
+        f'stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round"/>'
+        f'<path d="M39 23 L49 23 L49 33" fill="none" stroke="{white}" '
+        f'stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round"/>'
+        f'<path d="M16 40 L23 47 L33 36" fill="none" stroke="{c1}" '
+        f'stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>'
+    )
+
 
 def icon_svg(rounded: bool) -> str:
+    rx = 'rx="15"' if rounded else ""
     return f'''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
   <defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
     <stop offset="0" stop-color="{COLOR_DARK}"/><stop offset="1" stop-color="{COLOR_MAIN}"/>
   </linearGradient></defs>
-  {mark(rounded)}
+  <rect width="64" height="64" {rx} fill="url(#g)"/>
+  {glyph()}
 </svg>'''
+
 
 def write(name, svg, w, h):
     cairosvg.svg2png(bytestring=svg.encode(), write_to=os.path.join(OUT, name),
                      output_width=w, output_height=h)
     print("wrote", name, f"{w}x{h}")
 
+
 # favicon.svg (rounded, vector — primary favicon)
 with open(os.path.join(OUT, "favicon.svg"), "w", encoding="utf-8") as f:
     f.write(icon_svg(rounded=True).replace("<svg ",
             '<svg role="img" aria-label="%s" ' % BRAND, 1) + "\n")
 print("wrote favicon.svg")
+
+# Standalone mark for reuse (e.g. swap into headers, docs)
+with open(os.path.join(OUT, "logo-mark.svg"), "w", encoding="utf-8") as f:
+    f.write(icon_svg(rounded=True).replace("<svg ",
+            '<svg role="img" aria-label="%s" ' % BRAND, 1) + "\n")
+print("wrote logo-mark.svg")
 
 # PNG fallbacks / app icons
 write("favicon-32.png",       icon_svg(rounded=True),  32,  32)
@@ -83,8 +100,7 @@ og = f'''<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewB
   <rect width="1200" height="630" fill="url(#glow)"/>
   <g transform="translate(90,96)">
     <rect width="76" height="76" rx="18" fill="url(#m)"/>
-    <rect x="19" y="29" width="38" height="9" rx="4.5" fill="#ffffff"/>
-    <rect x="19" y="45" width="25" height="9" rx="4.5" fill="{COLOR_GREEN}"/>
+    <svg x="6" y="6" width="64" height="64" viewBox="0 0 64 64">{glyph()}</svg>
     <text x="100" y="56" font-family="{FONT}" font-size="46" font-weight="bold" fill="#ffffff">{BRAND}</text>
   </g>
   <text x="90" y="296" font-family="{FONT}" font-size="62" font-weight="bold" fill="#ffffff">{HEADLINE[0]}</text>
