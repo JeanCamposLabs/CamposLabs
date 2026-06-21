@@ -175,4 +175,26 @@
         .finally(function () { if (btn) { btn.disabled = false; btn.innerHTML = prev; } });
     });
   }
+
+  /* Mobile sticky CTA: reveal once past the hero, hide while the contact form is on screen
+     (so it never doubles up with the in-page CTA) and over the footer. */
+  var mcta = document.querySelector("[data-mobile-cta]");
+  if (mcta) {
+    var heroForCta = document.querySelector(".hero");
+    var contactSection = document.getElementById("contact");
+    var updateCta = function () {
+      var pastHero = heroForCta ? window.scrollY > heroForCta.offsetHeight - 120 : window.scrollY > 320;
+      var contactOnScreen = false;
+      if (contactSection) {
+        var r = contactSection.getBoundingClientRect();
+        contactOnScreen = r.top < window.innerHeight * 0.85 && r.bottom > 0;
+      }
+      var show = pastHero && !contactOnScreen;
+      mcta.classList.toggle("is-visible", show);
+      mcta.setAttribute("aria-hidden", String(!show));
+    };
+    updateCta();
+    window.addEventListener("scroll", updateCta, { passive: true });
+    window.addEventListener("resize", updateCta);
+  }
 })();

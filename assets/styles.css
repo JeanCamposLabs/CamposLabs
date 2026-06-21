@@ -773,6 +773,23 @@ strong { color: var(--ink); font-weight: 700; }
 }
 @media (min-width: 940px) { .hero__scroll { display: inline-flex; } }
 
+/* ----- Mobile sticky CTA --------------------------------------------------- */
+.mobile-cta {
+  position: fixed;
+  left: 0; right: 0; bottom: 0;
+  z-index: 40;
+  padding: 12px 16px;
+  padding-bottom: calc(12px + env(safe-area-inset-bottom, 0px));
+  background: rgba(255, 255, 255, .92);
+  backdrop-filter: saturate(160%) blur(12px);
+  border-top: 1px solid var(--line);
+  box-shadow: 0 -8px 26px -18px rgba(11, 21, 38, .55);
+  transform: translateY(140%);
+  transition: transform .3s ease;
+}
+.mobile-cta.is-visible { transform: translateY(0); }
+@media (min-width: 880px) { .mobile-cta { display: none; } }
+
 /* Utility */
 .center { text-align: center; }
 .mt-0 { margin-top: 0; }
