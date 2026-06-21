@@ -48,15 +48,28 @@
   var year = document.querySelector("[data-year]");
   if (year) year.textContent = String(new Date().getFullYear());
 
-  /* Respect reduced-motion: pause the autoplaying hero mascot, leaving its poster */
+  /* Hero mascot: play once (muted) then hold the final frame as a still.
+     For reduced-motion or when autoplay is blocked, jump straight to the final frame. */
   var heroVid = document.querySelector("video.hero__mascot");
-  if (heroVid && window.matchMedia) {
-    var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
-    var applyMotionPref = function () {
-      if (reduceMotion.matches) { heroVid.removeAttribute("autoplay"); heroVid.pause(); }
+  if (heroVid) {
+    var holdLastFrame = function () {
+      var end = (isFinite(heroVid.duration) && heroVid.duration > 0) ? heroVid.duration - 0.05 : 0;
+      try { heroVid.currentTime = end; } catch (e) {}
+      heroVid.pause();
     };
-    applyMotionPref();
-    if (reduceMotion.addEventListener) reduceMotion.addEventListener("change", applyMotionPref);
+    var jumpToEnd = function () {
+      if (heroVid.readyState >= 1) holdLastFrame();
+      else heroVid.addEventListener("loadedmetadata", holdLastFrame);
+    };
+    var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reduce) {
+      heroVid.removeAttribute("autoplay");
+      heroVid.pause();
+      jumpToEnd();
+    } else {
+      var played = heroVid.play && heroVid.play();
+      if (played && played.catch) played.catch(jumpToEnd);
+    }
   }
 
   /* Recovery estimator (illustrative, client-side only) */

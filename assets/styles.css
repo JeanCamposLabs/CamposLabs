@@ -360,7 +360,7 @@ strong { color: var(--ink); font-weight: 700; }
 .hero__art { display: flex; justify-content: center; }
 .hero__mascot {
   width: 100%;
-  max-width: 460px;
+  max-width: 520px;
   height: auto;
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-lg);

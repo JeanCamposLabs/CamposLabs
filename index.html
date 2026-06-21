@@ -162,15 +162,15 @@
             </div>
           </div>
 
-          <!-- Brand mascot — animated loop that blends from the static poster image -->
+          <!-- Brand mascot — plays once on load (muted), then holds its final frame as a still -->
           <div class="hero__art">
-            <video class="hero__mascot" width="900" height="900"
-                   autoplay muted loop playsinline preload="metadata"
+            <video class="hero__mascot" width="1280" height="720"
+                   autoplay muted playsinline preload="auto"
                    poster="assets/mascot.jpg"
-                   aria-label="EvenFee mascot — a friendly inspector measuring a product with a spirit level at her workbench">
+                   aria-label="EvenFee mascot — a friendly inspector checking that a board is level with a spirit level">
               <source src="assets/mascot.mp4" type="video/mp4">
-              <img src="assets/mascot.jpg" width="900" height="900" decoding="async"
-                   alt="EvenFee mascot — a friendly inspector measuring a product with a spirit level at her workbench">
+              <img src="assets/mascot.jpg" width="1280" height="720" decoding="async"
+                   alt="EvenFee mascot — a friendly inspector checking that a board is level with a spirit level">
             </video>
           </div>
         </div>
