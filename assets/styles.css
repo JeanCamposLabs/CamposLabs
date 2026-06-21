@@ -257,7 +257,7 @@ strong { color: var(--ink); font-weight: 700; }
   letter-spacing: -0.02em;
 }
 .brand:hover { text-decoration: none; }
-.brand__mark { width: 30px; height: 30px; border-radius: 9px; flex: none; box-shadow: var(--shadow-sm); }
+.brand__mark { width: 30px; height: 30px; flex: none; filter: drop-shadow(0 1px 2px rgba(11, 21, 38, .18)); }
 /* Brand wordmark: Bitcount at a light weight so the grid dots stay distinct (heavier weights merge them) */
 .brand__name { font-family: var(--font-display); font-weight: 300; letter-spacing: normal; }
 .brand__name b { color: var(--brand-700); font-weight: inherit; }
@@ -718,7 +718,7 @@ strong { color: var(--ink); font-weight: 700; }
   transition: opacity .55s ease .15s, transform .55s ease .15s;
   pointer-events: none;
 }
-.hero__brandmark img { width: 32px; height: 32px; border-radius: 9px; box-shadow: var(--shadow-sm); }
+.hero__brandmark img { width: 32px; height: 32px; filter: drop-shadow(0 1px 2px rgba(11, 21, 38, .22)); }
 .hero__brandmark span { font-family: var(--font-display); font-weight: 300; font-size: 1.25rem; color: var(--ink); }
 .hero__brandmark b { color: var(--brand-700); }
 
