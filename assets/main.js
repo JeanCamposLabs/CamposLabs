@@ -48,19 +48,39 @@
   var year = document.querySelector("[data-year]");
   if (year) year.textContent = String(new Date().getFullYear());
 
-  /* Hero mascot: play once (muted) then hold the final frame as a still.
-     For reduced-motion or when autoplay is blocked, jump straight to the final frame. */
+  /* Hero mascot: play once (muted) then hold the final frame, revealing the logo
+     and a replay control. Hovering (or tapping) the control re-runs the animation.
+     Reduced-motion / blocked autoplay jump straight to the final frame. */
   var heroVid = document.querySelector("video.hero__mascot");
   if (heroVid) {
+    var heroArt = heroVid.closest(".hero__art");
+    var setStopped = function () { if (heroArt) heroArt.classList.add("is-stopped"); };
+    var setPlaying = function () { if (heroArt) heroArt.classList.remove("is-stopped"); };
     var holdLastFrame = function () {
       var end = (isFinite(heroVid.duration) && heroVid.duration > 0) ? heroVid.duration - 0.05 : 0;
       try { heroVid.currentTime = end; } catch (e) {}
       heroVid.pause();
+      setStopped();
     };
     var jumpToEnd = function () {
       if (heroVid.readyState >= 1) holdLastFrame();
       else heroVid.addEventListener("loadedmetadata", holdLastFrame);
     };
+    var replay = function () {
+      setPlaying();
+      try { heroVid.currentTime = 0; } catch (e) {}
+      var p = heroVid.play && heroVid.play();
+      if (p && p.catch) p.catch(jumpToEnd);
+    };
+
+    heroVid.addEventListener("ended", setStopped);
+
+    var replayBtn = document.querySelector(".hero__replay");
+    if (replayBtn) {
+      replayBtn.addEventListener("mouseenter", replay);
+      replayBtn.addEventListener("click", replay);
+    }
+
     var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     if (reduce) {
       heroVid.removeAttribute("autoplay");

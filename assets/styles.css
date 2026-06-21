@@ -707,6 +707,37 @@ strong { color: var(--ink); font-weight: 700; }
 .estimator__result .btn { margin-top: 18px; }
 .estimator__disclaimer { color: #aebfe0; font-size: .8rem; margin-top: 6px; }
 
+/* ----- Hero mascot overlays (logo reveal + replay control) ----------------- */
+.hero__stage { position: relative; width: 100%; max-width: 520px; line-height: 0; }
+.hero__stage .hero__mascot { max-width: 100%; }
+
+.hero__brandmark {
+  position: absolute; top: 18px; left: 20px;
+  display: inline-flex; align-items: center; gap: .5em; line-height: 1;
+  opacity: 0; transform: translateY(-4px);
+  transition: opacity .55s ease .15s, transform .55s ease .15s;
+  pointer-events: none;
+}
+.hero__brandmark img { width: 32px; height: 32px; border-radius: 9px; box-shadow: var(--shadow-sm); }
+.hero__brandmark span { font-family: var(--font-display); font-weight: 300; font-size: 1.25rem; color: var(--ink); }
+.hero__brandmark b { color: var(--brand-700); }
+
+.hero__replay {
+  position: absolute; top: 16px; right: 16px;
+  width: 42px; height: 42px; border-radius: 50%;
+  display: inline-flex; align-items: center; justify-content: center; line-height: 0;
+  background: rgba(255, 255, 255, .85); color: var(--brand-700);
+  border: 1px solid var(--line); box-shadow: var(--shadow-sm); cursor: pointer;
+  opacity: 0; transform: scale(.9);
+  transition: opacity .45s ease .15s, transform .2s ease, background .2s ease, color .2s ease;
+  pointer-events: none; -webkit-tap-highlight-color: transparent;
+}
+.hero__replay svg { width: 20px; height: 20px; }
+.hero__replay:hover, .hero__replay:focus-visible { background: #fff; color: var(--brand-600); transform: scale(1.07); }
+
+.hero__art.is-stopped .hero__brandmark { opacity: 1; transform: none; }
+.hero__art.is-stopped .hero__replay { opacity: 1; transform: none; pointer-events: auto; }
+
 /* Utility */
 .center { text-align: center; }
 .mt-0 { margin-top: 0; }
