@@ -46,6 +46,7 @@ jobs:
             --exclude='scripts' \
             --exclude='configure.sh' \
             --exclude='README.md' \
+            --exclude='docs' \
             --exclude='assets/brand-v1' \
             ./ _site/
 
