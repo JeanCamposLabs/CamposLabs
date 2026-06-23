@@ -370,9 +370,8 @@ strong { color: var(--ink); font-weight: 700; }
   align-items: center;
 }
 .hero h1 { margin-top: 18px; font-size: clamp(2.5rem, 1.6rem + 3.4vw, 4.25rem); line-height: 1.08; }
-/* Bionic-reading cue: each word's start stays strong (ink) and its tail fades to the
-   muted shade, so the eye locks onto word-beginnings and scans the headline faster. */
-.hero h1 .rl { color: var(--muted); }
+/* Vivid first letter of each word — a small colour accent that adds reading rhythm. */
+.hero h1 .hl { color: var(--brand-600); }
 .hero__sub { margin-top: 20px; font-size: 1.2rem; color: var(--muted); max-width: 36ch; }
 .hero__actions { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 30px; }
 .hero__micro {
