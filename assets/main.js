@@ -66,9 +66,9 @@
   if (heroVid) {
     var LOOP_START = 13.0; // loop from here to the end (~3s idle) so she blinks on a calm cycle
 
-    // Reading guide: just after the brand reveal lands, sweep a single blue
-    // pulse through the accent letters (e → a → o → g) to lead the eye across
-    // the headline, then they settle back to ink. Runs once.
+    // Reading guide: just after the brand reveal lands, wash a blue highlight
+    // through the accent letters (e → a → o → g, ~1s apart, holding ~5s each) to
+    // lead the eye across the headline, then they settle back to ink. Runs once.
     var heroH1 = document.querySelector(".hero h1");
     var GUIDE_AT = 12.6; // seconds — the logo has dropped in and the scene is calm
     var guided = false;
