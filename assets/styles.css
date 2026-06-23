@@ -392,8 +392,8 @@ strong { color: var(--ink); font-weight: 700; }
 .hero__art { display: flex; justify-content: center; }
 
 /* On load: the copy arrives from the left, the video from the right. */
-@keyframes heroInLeft  { from { opacity: 0; transform: translateX(-56px); } to { opacity: 1; transform: none; } }
-@keyframes heroInRight { from { opacity: 0; transform: translateX(56px);  } to { opacity: 1; transform: none; } }
+@keyframes heroInLeft  { from { opacity: 0; transform: translateX(-100%); } to { opacity: 1; transform: none; } }
+@keyframes heroInRight { from { opacity: 0; transform: translateX(100%);  } to { opacity: 1; transform: none; } }
 .hero-reveal .hero__copy { animation: heroInLeft 3.4s cubic-bezier(.16, .84, .3, 1) both; }
 .hero-reveal .hero__art  { animation: heroInRight 3.4s cubic-bezier(.16, .84, .3, 1) both .2s; }
 @media (prefers-reduced-motion: reduce) {
