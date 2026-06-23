@@ -762,19 +762,21 @@ strong { color: var(--ink); font-weight: 700; }
   filter: blur(6px);
 }
 
-/* Replay control: kept almost invisible in the corner; brightens on hover/focus. */
+/* Replay control: fully hidden until the video is hovered/focused, then it fades in; brightens on its own hover. */
 .hero__replay {
   position: absolute; top: 16px; left: 16px;
   width: 42px; height: 42px; border-radius: 50%;
   display: inline-flex; align-items: center; justify-content: center; line-height: 0;
   background: rgba(255, 255, 255, .7); color: var(--brand-700);
   border: 1px solid var(--line); box-shadow: var(--shadow-sm); cursor: pointer;
-  opacity: .12;
-  transition: opacity .2s ease, transform .2s ease, background .2s ease, color .2s ease;
-  pointer-events: auto; -webkit-tap-highlight-color: transparent;
+  opacity: 0;
+  transition: opacity .25s ease, transform .2s ease, background .2s ease, color .2s ease;
+  pointer-events: none; -webkit-tap-highlight-color: transparent;
 }
 .hero__replay svg { width: 20px; height: 20px; }
-.hero__replay:hover, .hero__replay:focus-visible { opacity: .85; background: #fff; color: var(--brand-600); transform: scale(1.07); }
+.hero__art:hover .hero__replay,
+.hero__art:focus-within .hero__replay { opacity: .85; pointer-events: auto; }
+.hero__replay:hover, .hero__replay:focus-visible { background: #fff; color: var(--brand-600); transform: scale(1.07); }
 
 /* ----- Hero scroll cue ----------------------------------------------------- */
 .hero__scroll {
