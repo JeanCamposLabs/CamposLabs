@@ -394,8 +394,8 @@ strong { color: var(--ink); font-weight: 700; }
 /* On load: the copy arrives from the left, the video from the right. */
 @keyframes heroInLeft  { from { opacity: 0; transform: translateX(-56px); } to { opacity: 1; transform: none; } }
 @keyframes heroInRight { from { opacity: 0; transform: translateX(56px);  } to { opacity: 1; transform: none; } }
-.hero-reveal .hero__copy { animation: heroInLeft 1.7s cubic-bezier(.16, .84, .3, 1) both; }
-.hero-reveal .hero__art  { animation: heroInRight 1.7s cubic-bezier(.16, .84, .3, 1) both .15s; }
+.hero-reveal .hero__copy { animation: heroInLeft 3.4s cubic-bezier(.16, .84, .3, 1) both; }
+.hero-reveal .hero__art  { animation: heroInRight 3.4s cubic-bezier(.16, .84, .3, 1) both .2s; }
 @media (prefers-reduced-motion: reduce) {
   .hero-reveal .hero__copy, .hero-reveal .hero__art { animation: none; }
 }
