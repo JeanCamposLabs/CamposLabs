@@ -370,24 +370,72 @@ strong { color: var(--ink); font-weight: 700; }
   align-items: center;
 }
 .hero h1 { margin-top: 18px; font-size: clamp(2.5rem, 1.6rem + 3.4vw, 4.25rem); line-height: 1.08; }
-/* The hand-picked headline letters read as plain ink. Once the hero video has
-   landed, a blue highlight washes through them in reading order (e → a → o → g)
-   to guide the eye across the line: each lights up ~1s after the previous and
-   holds blue for ~5s, then they settle back to black. */
-.hero h1 .hl { color: var(--ink); }
+/* Letter-by-letter reading guide: once the hero video lands, each character
+   lights up in sequence (reading left to right) to guide the eye across the
+   headline, then they settle back to ink. Honour prefers-reduced-motion. */
+.hero h1 .char { color: var(--ink); }
 @keyframes letterBlink {
   0%   { color: var(--ink); }
-  8%   { color: var(--brand-600); }
-  92%  { color: var(--brand-600); }
+  25%  { color: var(--brand-600); }
+  75%  { color: var(--brand-600); }
   100% { color: var(--ink); }
 }
-.hero h1.is-guiding .hl { animation: letterBlink 6s ease-in-out both; }
-.hero h1.is-guiding .hl:nth-of-type(1) { animation-delay: 0s; }
-.hero h1.is-guiding .hl:nth-of-type(2) { animation-delay: 1s; }
-.hero h1.is-guiding .hl:nth-of-type(3) { animation-delay: 2s; }
-.hero h1.is-guiding .hl:nth-of-type(4) { animation-delay: 3s; }
+.hero h1.is-guiding .char { animation: letterBlink 0.25s ease-in-out forwards; }
+.hero h1.is-guiding .char:nth-of-type(1) { animation-delay: 0.0s; }
+.hero h1.is-guiding .char:nth-of-type(2) { animation-delay: 0.08s; }
+.hero h1.is-guiding .char:nth-of-type(3) { animation-delay: 0.16s; }
+.hero h1.is-guiding .char:nth-of-type(4) { animation-delay: 0.24s; }
+.hero h1.is-guiding .char:nth-of-type(5) { animation-delay: 0.32s; }
+.hero h1.is-guiding .char:nth-of-type(6) { animation-delay: 0.4s; }
+.hero h1.is-guiding .char:nth-of-type(7) { animation-delay: 0.48s; }
+.hero h1.is-guiding .char:nth-of-type(8) { animation-delay: 0.56s; }
+.hero h1.is-guiding .char:nth-of-type(9) { animation-delay: 0.64s; }
+.hero h1.is-guiding .char:nth-of-type(10) { animation-delay: 0.72s; }
+.hero h1.is-guiding .char:nth-of-type(11) { animation-delay: 0.8s; }
+.hero h1.is-guiding .char:nth-of-type(12) { animation-delay: 0.88s; }
+.hero h1.is-guiding .char:nth-of-type(13) { animation-delay: 0.96s; }
+.hero h1.is-guiding .char:nth-of-type(14) { animation-delay: 1.04s; }
+.hero h1.is-guiding .char:nth-of-type(15) { animation-delay: 1.12s; }
+.hero h1.is-guiding .char:nth-of-type(16) { animation-delay: 1.2s; }
+.hero h1.is-guiding .char:nth-of-type(17) { animation-delay: 1.28s; }
+.hero h1.is-guiding .char:nth-of-type(18) { animation-delay: 1.36s; }
+.hero h1.is-guiding .char:nth-of-type(19) { animation-delay: 1.44s; }
+.hero h1.is-guiding .char:nth-of-type(20) { animation-delay: 1.52s; }
+.hero h1.is-guiding .char:nth-of-type(21) { animation-delay: 1.6s; }
+.hero h1.is-guiding .char:nth-of-type(22) { animation-delay: 1.68s; }
+.hero h1.is-guiding .char:nth-of-type(23) { animation-delay: 1.76s; }
+.hero h1.is-guiding .char:nth-of-type(24) { animation-delay: 1.84s; }
+.hero h1.is-guiding .char:nth-of-type(25) { animation-delay: 1.92s; }
+.hero h1.is-guiding .char:nth-of-type(26) { animation-delay: 2.0s; }
+.hero h1.is-guiding .char:nth-of-type(27) { animation-delay: 2.08s; }
+.hero h1.is-guiding .char:nth-of-type(28) { animation-delay: 2.16s; }
+.hero h1.is-guiding .char:nth-of-type(29) { animation-delay: 2.24s; }
+.hero h1.is-guiding .char:nth-of-type(30) { animation-delay: 2.32s; }
+.hero h1.is-guiding .char:nth-of-type(31) { animation-delay: 2.4s; }
+.hero h1.is-guiding .char:nth-of-type(32) { animation-delay: 2.48s; }
+.hero h1.is-guiding .char:nth-of-type(33) { animation-delay: 2.56s; }
+.hero h1.is-guiding .char:nth-of-type(34) { animation-delay: 2.64s; }
+.hero h1.is-guiding .char:nth-of-type(35) { animation-delay: 2.72s; }
+.hero h1.is-guiding .char:nth-of-type(36) { animation-delay: 2.8s; }
+.hero h1.is-guiding .char:nth-of-type(37) { animation-delay: 2.88s; }
+.hero h1.is-guiding .char:nth-of-type(38) { animation-delay: 2.96s; }
+.hero h1.is-guiding .char:nth-of-type(39) { animation-delay: 3.04s; }
+.hero h1.is-guiding .char:nth-of-type(40) { animation-delay: 3.12s; }
+.hero h1.is-guiding .char:nth-of-type(41) { animation-delay: 3.2s; }
+.hero h1.is-guiding .char:nth-of-type(42) { animation-delay: 3.28s; }
+.hero h1.is-guiding .char:nth-of-type(43) { animation-delay: 3.36s; }
+.hero h1.is-guiding .char:nth-of-type(44) { animation-delay: 3.44s; }
+.hero h1.is-guiding .char:nth-of-type(45) { animation-delay: 3.52s; }
+.hero h1.is-guiding .char:nth-of-type(46) { animation-delay: 3.6s; }
+.hero h1.is-guiding .char:nth-of-type(47) { animation-delay: 3.68s; }
+.hero h1.is-guiding .char:nth-of-type(48) { animation-delay: 3.76s; }
+.hero h1.is-guiding .char:nth-of-type(49) { animation-delay: 3.84s; }
+.hero h1.is-guiding .char:nth-of-type(50) { animation-delay: 3.92s; }
+.hero h1.is-guiding .char:nth-of-type(51) { animation-delay: 4.0s; }
+.hero h1.is-guiding .char:nth-of-type(52) { animation-delay: 4.08s; }
+.hero h1.is-guiding .char:nth-of-type(53) { animation-delay: 4.16s; }
 @media (prefers-reduced-motion: reduce) {
-  .hero h1.is-guiding .hl { animation: none; }
+  .hero h1.is-guiding .char { animation: none; }
 }
 .hero__sub { margin-top: 20px; font-size: 1.2rem; color: var(--muted); max-width: 36ch; }
 .hero__actions { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 30px; }
