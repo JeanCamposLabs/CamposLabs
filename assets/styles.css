@@ -567,11 +567,11 @@ strong { color: var(--ink); font-weight: 700; }
   box-shadow: 0 20px 42px -18px rgba(239, 68, 68, .55);
 }
 #benefits .grid > .card:nth-child(2) {  /* orange */
-  background: linear-gradient(150deg, #fb923c 0%, #ea580c 100%);
+  background: linear-gradient(150deg, #f97316 0%, #b4400a 100%);
   box-shadow: 0 20px 42px -18px rgba(249, 115, 22, .5);
 }
-#benefits .grid > .card:nth-child(3) {  /* yellow */
-  background: linear-gradient(150deg, #fde047 0%, #f59e0b 100%);
+#benefits .grid > .card:nth-child(3) {  /* yellow/gold */
+  background: linear-gradient(150deg, #eab308 0%, #a35709 100%);
   box-shadow: 0 20px 42px -18px rgba(234, 179, 8, .5);
 }
 #benefits .grid > .card:nth-child(4) {  /* green */
@@ -586,16 +586,12 @@ strong { color: var(--ink); font-weight: 700; }
   background: linear-gradient(150deg, #8b5cf6 0%, #6d28d9 100%);
   box-shadow: 0 20px 42px -18px rgba(139, 92, 246, .5);
 }
-/* Light warm cards (orange, yellow): dark text + dark icon chip for contrast */
+/* Warm cards (orange, yellow): deepened gradients above, plus a stronger
+   text-shadow so the white text stays legible on the lighter hues. */
 #benefits .grid > .card:nth-child(2) h3,
-#benefits .grid > .card:nth-child(3) h3 { color: rgba(0, 0, 0, .88); text-shadow: none; }
+#benefits .grid > .card:nth-child(3) h3,
 #benefits .grid > .card:nth-child(2) p,
-#benefits .grid > .card:nth-child(3) p { color: rgba(0, 0, 0, .72); text-shadow: none; }
-#benefits .grid > .card:nth-child(2) .icon-box,
-#benefits .grid > .card:nth-child(3) .icon-box {
-  background: rgba(0, 0, 0, .12); color: rgba(0, 0, 0, .82);
-  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, .12);
-}
+#benefits .grid > .card:nth-child(3) p { text-shadow: 0 1px 3px rgba(0, 0, 0, .45); }
 #benefits .card:hover { transform: translateY(-3px); }
 
 /* Problem section */
