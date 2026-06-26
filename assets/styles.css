@@ -793,11 +793,17 @@ strong { color: var(--ink); font-weight: 700; }
 .contact__email a { color: #fff; font-weight: 600; text-decoration: underline; text-underline-offset: 2px; }
 
 /* ----- Brand mascot clip (in "How it works") ------------------------------- */
+/* "How it works" — tightened so the whole section (head + clip + 4 steps)
+   fits within a typical laptop viewport. */
+#how-it-works { padding-block: clamp(40px, 3vw, 64px); }
+#how-it-works .section__head { margin-bottom: 20px; }
+#how-it-works .card { padding: 22px; }
+
 .mascot-clip {
   position: relative;
   width: 100%;
-  max-width: 470px;
-  margin: clamp(22px, 3vw, 36px) auto clamp(28px, 4vw, 46px);
+  max-width: 360px;
+  margin: clamp(12px, 1.6vw, 20px) auto clamp(16px, 2.2vw, 26px);
   line-height: 0;
 }
 /* Soft teal aura echoing the scene background, so the rounded clip melts in. */
