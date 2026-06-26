@@ -132,26 +132,7 @@
     });
   }
 
-  /* Recovery estimator (illustrative, client-side only) */
-  var est = document.getElementById("estimator");
-  if (est) {
-    var elUnits = document.getElementById("est-units");
-    var elOver = document.getElementById("est-over");
-    var elMonths = document.getElementById("est-months");
-    var elTotal = document.getElementById("est-total");
-    var elMonthly = document.getElementById("est-monthly");
-    var money = function (n) { return "$" + Math.round(n).toLocaleString("en-US"); };
-    var num = function (el) { return Math.max(0, parseFloat(el && el.value) || 0); };
-    var recompute = function () {
-      var perMonth = num(elUnits) * num(elOver);
-      elTotal.textContent = money(perMonth * num(elMonths));
-      elMonthly.textContent = "about " + money(perMonth) + " / month on this product";
-    };
-    est.addEventListener("input", recompute);
-    recompute();
-  }
-
-  /* Contact form — AJAX submit with an inline success state.
+/* Contact form — AJAX submit with an inline success state.
      Falls back to a normal POST (with redirect to thanks.html) when JS is off. */
   var form = document.getElementById("contact-form");
   if (form) {
