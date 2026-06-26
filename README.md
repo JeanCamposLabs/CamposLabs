@@ -31,27 +31,41 @@ ratings** — everything is appropriate for a brand-new company.
 
 ## What's in here
 
+> Agents: see [`CLAUDE.md`](CLAUDE.md) for a navigation-focused project map.
+
 ```
 .
-├── index.html              # Home (hero, problem, how it works, benefits, security, pricing, FAQ, CTA)
-├── privacy.html            # Privacy Policy (SP-API data, no buyer PII, security, retention, GDPR)
-├── terms.html              # Terms of Service (short)
-├── 404.html                # Branded not-found page
+├── index.html                      # Home (hero, problem, how it works, benefits, security, pricing, FAQ, CTA)
+├── resources.html                  # Resource hub linking the article pages
+├── fba-size-tier-overcharges.html  # Article / SEO landing page
+├── fba-reimbursement-basics.html   # Article / SEO landing page
+├── privacy.html                    # Privacy Policy (SP-API data, no buyer PII, security, retention, GDPR)
+├── terms.html                      # Terms of Service (short)
+├── thanks.html                     # Contact-form thank-you (JS-off fallback target)
+├── 404.html                        # Branded not-found page
 ├── assets/
-│   ├── styles.css          # All styles + design tokens (:root)
-│   ├── main.js             # Mobile nav, sticky-header, footer year (progressive enhancement)
-│   ├── favicon.svg         # Vector favicon
-│   ├── favicon-32.png      # PNG favicon fallback
-│   ├── apple-touch-icon.png
-│   ├── icon-192.png / icon-512.png   # PWA / manifest icons
-│   └── og-image.png        # 1200×630 social share image
-├── site.webmanifest        # PWA manifest
+│   ├── styles.css                  # All styles + design tokens (:root)
+│   ├── main.js                     # Mobile nav, sticky-header, contact form, footer year (progressive enhancement)
+│   ├── favicon-32.png              # PNG favicon
+│   ├── apple-touch-icon.png        # iOS home-screen icon
+│   ├── icon-192.png / icon-512.png # PWA / manifest icons
+│   ├── og-image.png                # 1200×630 social share image
+│   ├── logo-mark.png               # Brand mark (headers/footers)
+│   ├── mascot.jpg                  # Poster frame for the hero mascot video
+│   ├── mascot-hero.mp4             # Hero mascot animation
+│   ├── mascot-avatar.png           # Mascot avatar in the hero tool header
+│   ├── dimension-measurement.mp4   # Measurement demo video (Problem section)
+│   └── fonts/                      # Self-hosted Bitcount Grid Double woff2
+├── site.webmanifest                # PWA manifest
 ├── robots.txt
-├── sitemap.xml
-├── .nojekyll               # Tell GitHub Pages to serve files as-is (no Jekyll)
-├── configure.sh            # One-command rebrand (name / email / URL)
-└── scripts/
-    └── generate-assets.py  # Regenerate favicon, icons, and OG image
+├── sitemap.xml                     # Canonical page list (update when adding/removing pages)
+├── CNAME                           # Custom domain for GitHub Pages
+├── .nojekyll                       # Tell GitHub Pages to serve files as-is (no Jekyll)
+├── configure.sh                    # One-command rebrand (name / email / URL) — dev-only, not deployed
+├── docs/launch-checklist.md        # Pre-launch checklist — dev-only, not deployed
+├── scripts/
+│   └── generate-assets.py          # Regenerate favicon, icons, and OG image — dev-only, not deployed
+└── .github/workflows/deploy.yml    # GitHub Pages deploy (push to main)
 ```
 
 ---
